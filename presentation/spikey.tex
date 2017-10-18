@@ -2,9 +2,16 @@
 %\documentclass[aspectratio=43]{beamer}
 \usetheme{metropolis}
 
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+
 \usepackage{esdiff}
 \usepackage{siunitx}
 %\usepackage{enumitem}
+\usepackage{pdfpages}
+
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{minted}
 \setminted{fontsize=\scriptsize}
@@ -18,10 +25,10 @@
 \definecolor{orange}{HTML}{D7AA50}
 
 \title{Tutorial: BrainScaleS Neuromorphic Hardware}
-\subtitle{HBP CodeJam Workshop \#8}
+\subtitle{HBP Summit 2017}
 
 \date{\today}
-\author{UHEI}
+\author{Eric Müller, Andreas Grübl}
 \institute{Kirchhoff-Institute for Physics, Heidelberg University}
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
@@ -31,6 +38,15 @@
 
 \begin{document}
 
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf[pages=1]{HBP_Summit_Template.pdf}
+}
+
+{
+	\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight,page=2]{HBP_Summit_Template.pdf}%HBP_Summit_Template_Slide_BG.png}%
+}
+
 \maketitle
 
 \section{Introduction}
@@ -39,14 +55,17 @@
 	\begin{columns}[onlytextwidth]
 		\begin{column}{0.55\textwidth}
 			\textbf{Wifi:} \\
-			ESSID: DemoBrainScaleS\\
-			Password: BrainScaleS
+			ESSIDs:
+			\texttt{DemoBrainScaleS},
+			\texttt{DemoBrainScaleS1},
+			\texttt{DemoBrainScaleS2}\\
+			Password: \texttt{BrainScaleS}
 
 			\vspace{3ex}
 
 			\textbf{Jupyter notebook hub:} \\
-			\url{http://192.168.124.1:8000} \\
-			(GitHub account required)
+			\url{http://192.168.0.212}\\
+			(Pick a username, password is \texttt{BrainScaleS})
 		\end{column}
 		\hfill
 		\begin{column}{0.40\textwidth}
@@ -56,7 +75,7 @@
 %			\vspace{3ex}
 
 			\textbf{Spikey school:} \\
-			\url{https://goo.gl/D6i3nA}
+			\url{http://192.168.0.212}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -609,4 +628,5 @@ pynn.record_v(neurons[0], "")
 		\end{itemize}
 \end{frame}
 
+}
 \end{document}
