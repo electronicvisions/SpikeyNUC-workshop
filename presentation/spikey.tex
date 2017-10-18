@@ -1,8 +1,10 @@
 \documentclass[aspectratio=169]{beamer}
+%\documentclass[aspectratio=43]{beamer}
 \usetheme{metropolis}
 
 \usepackage{esdiff}
 \usepackage{siunitx}
+%\usepackage{enumitem}
 
 \usepackage{minted}
 \setminted{fontsize=\scriptsize}
@@ -15,11 +17,11 @@
 \definecolor{green}{HTML}{7D966E}
 \definecolor{orange}{HTML}{D7AA50}
 
-\title{BrainScaleS Workshop}
-\subtitle{4th HBP School}
+\title{Tutorial: BrainScaleS Neuromorphic Hardware}
+\subtitle{HBP CodeJam Workshop \#8}
 
 \date{\today}
-\author{Sebastian Billaudelle \& Korbinian Schreiber}
+\author{UHEI}
 \institute{Kirchhoff-Institute for Physics, Heidelberg University}
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
@@ -35,22 +37,23 @@
 
 \begin{frame}{Information}
 	\begin{columns}[onlytextwidth]
-		\begin{column}{0.45\textwidth}
-			\textbf{WIFI:} \\
-			ESSID: spikey \\
-			password: spikey@obergurgl
+		\begin{column}{0.55\textwidth}
+			\textbf{Wifi:} \\
+			ESSID: DemoBrainScaleS\\
+			Password: BrainScaleS
 
 			\vspace{3ex}
 
-			\textbf{Jupyter notebooks:} \\
-			\url{http://obss3:88xx}
+			\textbf{Jupyter notebook hub:} \\
+			\url{http://192.168.124.1:8000} \\
+			(GitHub account required)
 		\end{column}
 		\hfill
-		\begin{column}{0.45\textwidth}
-			\textbf{GitHub:} \\
-			\url{https://goo.gl/MzYqXX}
-
-			\vspace{3ex}
+		\begin{column}{0.40\textwidth}
+%			\textbf{GitHub:} \\
+%			\url{https://goo.gl/MzYqXX}
+%
+%			\vspace{3ex}
 
 			\textbf{Spikey school:} \\
 			\url{https://goo.gl/D6i3nA}
@@ -116,28 +119,32 @@
 }
 
 {
-\usebackgroundtemplate{\includegraphics[width=\paperwidth]{assets/five_column_background.pdf}}%
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{assets/six_column_background.pdf}}%
 \begin{frame}[fragile]
 	\frametitle{Roadmap}
 
 	\begin{columns}
-		\column{0.2\paperwidth}
+		\column{0.15\paperwidth}
 		\begin{center}
 			\circled{2004}
 		\end{center}
-		\column{0.2\paperwidth}
+		\column{0.15\paperwidth}
 		\begin{center}
 			\circled{2010}
 		\end{center}
-		\column{0.2\paperwidth}
+		\column{0.15\paperwidth}
 		\begin{center}
 			\circled{2015}
 		\end{center}
-		\column{0.2\paperwidth}
+		\column{0.15\paperwidth}
 		\begin{center}
 			\circled{2017}
 		\end{center}
-		\column{0.2\paperwidth}
+		\column{0.15\paperwidth}
+		\begin{center}
+			\circled{2018}
+		\end{center}
+		\column{0.15\paperwidth}
 		\begin{center}
 			\circled{2022}
 		\end{center}
@@ -145,51 +152,62 @@
 
 	\vspace{20pt}
 
+	\setlength{\leftmargini}{0.5em}
+
 	\begin{columns}[T]
-		\column{0.2\paperwidth}
+		\column{0.15\paperwidth}
 		\begin{center}
-			\textbf{\color{mDarkTeal}Spikey}
-		\end{center}
+			\textbf{\color{mDarkTeal}Spikey \phantom{longlong}}
 		\begin{itemize}
-				\item single chip system
-				\item 384 LIF neurons
+			\item[] single chip system
+			\item[] 384 LIF neurons
 		\end{itemize}
+		\end{center}
 
-		\column{0.2\paperwidth}
+		\column{0.15\paperwidth}
 		\begin{center}
-			\textbf{\color{mDarkTeal}HICANN}
-		\end{center}
+			\textbf{\color{mDarkTeal}HICANN \phantom{longlong}}
 		\begin{itemize}
-				\item \SI{180}{\nano\meter} CMOS
-				\item 512 AdEx neurons
+			\item[] \SI{180}{\nano\meter} CMOS
+			\item[] 512 AdEx neurons
 		\end{itemize}
+		\end{center}
 
-		\column{0.2\paperwidth}
+		\column{0.15\paperwidth}
 		\begin{center}
 			\textbf{\color{mDarkTeal}20 Wafer System}
-		\end{center}
 		\begin{itemize}
-			\item 4 million neurons
-			\item 0.9 billion synapses
+			\item[] 4 million neurons
+			\item[] 0.9 billion synapses
 		\end{itemize}
+		\end{center}
 
-		\column{0.2\paperwidth}
+		\column{0.15\paperwidth}
 		\begin{center}
 			\textbf{\color{mDarkTeal}HICANN DLS}
-		\end{center}
 		\begin{itemize}
-			\item \SI{65}{\nano\meter} CMOS
-			\item PPU: integrated processing unit for advanced plasticity
+			\item[] \SI{65}{\nano\meter} CMOS
+			\item[] 32 neurons
+			\item[] integrated CPU for programmable plasticity
 		\end{itemize}
+		\end{center}
 
-		\column{0.2\paperwidth}
+		\column{0.15\paperwidth}
+		\begin{center}
+			\textbf{\color{mDarkTeal}HICANN DLS-SR}
+		\begin{itemize}
+			\item[] O(512) neurons
+		\end{itemize}
+		\end{center}
+
+		\column{0.15\paperwidth}
 		\begin{center}
 			\textbf{\color{mDarkTeal}500 Wafer System}
-		\end{center}
 		\begin{itemize}
-			\item 500 million neurons
-			\item 130 billion synapses
+			\item[] 500 million neurons
+			\item[] 130 billion synapses
 		\end{itemize}
+		\end{center}
 	\end{columns}
 \end{frame}
 }
@@ -215,8 +233,9 @@
 		\hfill
 		\begin{column}{0.50\textwidth}
 
-			\textbf{Field-programmable gate array:}
+			\textbf{FPGA:}
 			\begin{itemize}
+				\item Field-programmable gate array
 				\item reconfigurable logic gates
 				\item experiment control and communication
 			\end{itemize}
