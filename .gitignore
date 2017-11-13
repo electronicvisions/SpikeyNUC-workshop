@@ -219,3 +219,9 @@ TSWLatexianTemp*
 # expex forward references with \gathertags
 *-tags.tex
 
+# generated pngs
+content/*.png
+content/*.py
+content/spiketrain.in
+content/logfile.txt
+content/.ipynb_checkpoints
